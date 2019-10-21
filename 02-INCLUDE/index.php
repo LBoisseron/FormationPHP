@@ -10,7 +10,7 @@ require 'b.php';
 require_once 'b.php'; // ne s'affichera pas
 require_once 'b.php'; // ne s'affichera pas
 
-require_once 'c.php'; // fatal error: require_once
+// require_once 'c.php'; // fatal error: require_once
 echo 'RESTE DU SITE...';
 
 /*
