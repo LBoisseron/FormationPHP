@@ -43,7 +43,7 @@ if(!empty($_POST)) {
         if(empty($email)) {
             $erreurs['email']   = "Vous avez oublié de saisir votre email";
         }
-        if(!empty($email) && !filter_var($email, FILTER_VALIDATE_FLOAT)) {
+        if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $erreurs['email']   = "Vérifiez le format de votre email";
         }
         if(empty($sujet)) {
@@ -52,17 +52,22 @@ if(!empty($_POST)) {
         if(strlen($message) < 15) {
             $erreurs['message'] = "Votre message est trop court";
         }
-}
 
 /**-------------INSERER DES DONNEES-------------------- */
-$query = $bdd->prepare('INSERT INTO `contacts` (`email`, `sujet`, `message`) VALUES (:email, :sujet, :message);');
-$query->bindvalue(:email, $email, PDO::PARAM_STR);
-$query->bindvalue(:sujet, $sujet, PDO::PARAM_STR);
-$query->bindvalue(:message, $message, PDO::PARAM_STR);
-$query->execute();
+    $query = $bdd->prepare('INSERT INTO `contacts` (`email`, `sujet`, `message`) VALUES (:email, :sujet, :message);');
+        $query->bindvalue(':email', $email, PDO::PARAM_STR);
+        $query->bindvalue(':sujet', $sujet, PDO::PARAM_STR);
+        $query->bindvalue(':message', $message, PDO::PARAM_STR);
+        $query->execute();
 
-/**-------------RECUPERER LES DONNEES-------------------- */
+//var_dump($email);
 
+/**-------------RECUPERER DES DONNEES-------------------- */
+$query = $bdd->query('SELECT * FROM contacts');
+$contactss = $query->fetchAll();
+
+
+}
 
 ?>
 
