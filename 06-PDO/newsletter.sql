@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS newsletter (
+id_abonnews int(11) NOT NULL AUTO_INCREMENT,
+nomcomplet VARCHAR (160) NOT NULL,
+email VARCHAR (80) NOT NULL,
+PRIMARY KEY (id_abonnews)
+) ENGINE=innoDB DEFAULT CHARSET=utf8mb4

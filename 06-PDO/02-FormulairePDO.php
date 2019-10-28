@@ -5,7 +5,7 @@
  * grâce au require_once, ma variable $bdd est maintenant disponible dans cette page
  * je peux donc utiliser $bdd pour accéder à ma BDD
  */
-require_once 'config/database.php';
+require_once 'config/database2.php';
 
 
 /*
@@ -105,6 +105,7 @@ $contactss = $query->fetchAll();
         <div class="input-group-prepend">
             <div class="input-group-text">@</div>
         </div>
+        
             <input type="text" class="form-control <?= isset($erreurs['email']) ? 'is-invalid' : '' ?>" id="email" name="email" value="<?= $email ?>" placeholder="Saisissez votre @mail">
             <div class="invalid-feedback">
                 <?= isset($erreurs['email']) ? $erreurs['email'] : '' ?>
