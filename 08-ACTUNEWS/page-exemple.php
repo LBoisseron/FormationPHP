@@ -5,14 +5,14 @@ require_once(__DIR__.'/partials/header.php');
 
 <!--ICI viendra le contenu de la page-->
 <div class="p-3 mx-auto text-center">
-    <h1 class="display-4">BanMwenFréLa</h1>
+    <h1 class="display-4">Exemple</h1>
 </div>
 
 <div class="py-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>KontanVwèZot</h1>
+                <h3>Page exemple</h3>
             </div>
         </div>
     </div>

@@ -1,6 +1,10 @@
 <?php
 // inclusion de header.php sur la page
 require_once(__DIR__.'/partials/header.php');
+
+
+// récupération des articles de la base
+$articles = getArticles();
 ?>
 
 <!--ICI viendra le contenu de la page-->
@@ -11,9 +15,18 @@ require_once(__DIR__.'/partials/header.php');
 <div class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <h1>KontanVwèZot</h1>
+            <?php foreach ($articles as $article) { ?>
+            <div class="col-md-4 mt-4">
+                <div class="card">
+                    <img src="assets/img/article/<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['titre'] ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $article['titre'] ?></h5>
+                        <p class="card-text"></p>
+                        <a href="#" class="btn btn-primary">Gadé vwè...</a>
+                    </div>
+                </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>

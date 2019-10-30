@@ -1,5 +1,15 @@
 <?php
-$categories = ['ManjéBon', 'KréyolVaybz', 'KeepLeSwag', 'Lyannaj']
+// inclusion du fichier database
+require_once(__DIR__.'/../config/database.php');
+// inclusion de nos fonctions
+require_once(__DIR__.'/../functions/categorie.php');
+require_once(__DIR__.'/../functions/article.php');
+
+//$categories = ['ManjéBon', 'KréyolVaybz', 'KeepLeSwag', 'Lyannaj']
+// recurération des catégories de la base
+
+$categories = getCategories();
+
 ?>
 
 <!DOCTYPE html>
@@ -28,19 +38,19 @@ $categories = ['ManjéBon', 'KréyolVaybz', 'KeepLeSwag', 'Lyannaj']
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">KontanVwèZot <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href=".">KontanVwèZot <span class="sr-only">(current)</span></a>
                 </li>
 <!--Les caégories du site-->
                 <?php foreach($categories as $categorie) { ?>
                 <li class="nav-item active">
-                <a class="nav-link" href="#"><?= $categorie ?><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="categorie.php?nom_categorie=<?= $categorie['nom']; ?>"><?= $categorie['nom']; ?><span class="sr-only">(current)</span></a>
                 </li>
                 <?php } ?>
                 <li class="nav-item active btn-outline-primary mx-2">
-                    <a class="nav-link" href="#">Konèkté'w <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="connexion.php">Konèkté'w <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active btn-outline-primary mx-2">
-                    <a class="nav-link" href="#">Enskri'w <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="inscription.php">Enskri'w <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
