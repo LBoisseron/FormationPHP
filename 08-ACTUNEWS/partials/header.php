@@ -1,14 +1,22 @@
 <?php
+// inclusion du fichier global
+require_once(__DIR__.'/../functions/global.php');
 // inclusion du fichier database
 require_once(__DIR__.'/../config/database.php');
 // inclusion de nos fonctions
 require_once(__DIR__.'/../functions/categorie.php');
 require_once(__DIR__.'/../functions/article.php');
+require_once(__DIR__.'/../functions/auteur.php');
+
 
 //$categories = ['ManjéBon', 'KréyolVaybz', 'KeepLeSwag', 'Lyannaj']
 // recurération des catégories de la base
 
 $categories = getCategories();
+
+// si un auteur est en session, $auteur prendra la valeur de tableau auteur.
+//sinon, $auteur prendra comme valeur FALSE.
+$auteurEstConnecte = estConnecte();
 
 ?>
 
@@ -43,15 +51,26 @@ $categories = getCategories();
 <!--Les caégories du site-->
                 <?php foreach($categories as $categorie) { ?>
                 <li class="nav-item active">
-                <a class="nav-link" href="categorie.php?nom_categorie=<?= $categorie['nom']; ?>"><?= $categorie['nom']; ?><span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="categorie.php?nom_categorie=<?= $categorie['nom']; ?>&id_categorie=<?= $categorie['id_categorie'] ?>"><?= $categorie['nom']; ?><span class="sr-only">(current)</span></a>
                 </li>
                 <?php } ?>
+                
+                <?php if($auteurEstConnecte) { ?>
+                    <span class="navbar-text mx-2">
+                        Byenbonjou <strong><?= $auteurEstConnecte['prenom']?></strong>
+                    </span>
+                    <a class="nav-item active btn-outline-primary mx-2" href="deconnexion.php">Déconnexion</a>
+                <?php } else { ?>
+
+                
+                
                 <li class="nav-item active btn-outline-primary mx-2">
                     <a class="nav-link" href="connexion.php">Konèkté'w <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active btn-outline-primary mx-2">
                     <a class="nav-link" href="inscription.php">Enskri'w <span class="sr-only">(current)</span></a>
                 </li>
+                <?php } ?>
             </ul>
         </div>
     </nav>

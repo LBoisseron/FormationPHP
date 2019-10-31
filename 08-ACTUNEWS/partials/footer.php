@@ -14,8 +14,7 @@
                 <ul class="list-unstyled">
                     <?php foreach($categories as $categorie) { ?>
                         <li>
-                            <a href="categorie.php?nom_categorie=<?= $categorie['nom']; ?>" class="text-muted">
-                                <?= $categorie['nom'] ?>
+                            <a href="categorie.php?nom_categorie=<?= $categorie['nom']; ?>&id_categorie=<?= $categorie['id_categorie'] ?>"><?= $categorie['nom']; ?>
                             </a>
                         </li>
                     <?php } ?>

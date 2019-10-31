@@ -21,7 +21,14 @@ if(!empty($_POST)) {
         $erreurs['motdepasse'] = 'Vous avez oublié votre mot de passe';
     }
     if(empty($erreurs)) {
+        // -- début du processus de connexion
+        if(connexion($email, $motdepasse)) {
+            //l'utilisateur est bien connecté. la fonction retourne un true
+            redirection('.');
 
+        } else {
+            $erreurs['email'] = "Email / Mot de passe incorrect.";
+        }
     }
 }
 
@@ -35,10 +42,15 @@ if(!empty($_POST)) {
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
+            <?php if(isset($_GET['inscription'])) { ?>
+                <div class="alert alert-success">
+                    Félicitations ! Vous pouvez vous connecter.
+                </div>
+            <?php } ?>
             <form method="POST" class="form-horizontal">              
             <div class="form-group">
                     <label for="email">Adresse e-mail</label>
-                    <input type="email" class="form-control <?= isset($erreurs['email']) ? 'is-invalid' : '' ?>" id="email" name="email" value="<?= $email ?>" aria-describedby="emailHelp" placeholder="anonyme@exemple.com">
+                    <input type="email" class="form-control <?= isset($erreurs['email']) ? 'is-invalid' : '' ?>" id="email" name="email" value="<?= $email ?? $_GET['email'] ?? '' ?>" aria-describedby="emailHelp" placeholder="anonyme@exemple.com">
                     <div class="invalid-feedback">
                         <?= isset($erreurs['email']) ? $erreurs['email'] : '' ?>
                     </div>

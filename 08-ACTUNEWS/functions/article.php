@@ -9,26 +9,26 @@
 // 1.
 function getArticles() {
     global $bdd;
-    $query = $bdd->query('SELECT * FROM article ORDER BY id_article DESC');
+    $query = $bdd->query('SELECT * FROM article, auteur WHERE article.id_auteur = auteur.id_auteur ORDER BY article.id_article DESC');
     return $query->fetchAll();
 }
 
 // 2.
-function getArticleById($article_id) {
+function getArticleById($id_article) {
     global $bdd;
-    $sql = 'SELECT * FROM article WHERE id_article = :id';
+    $sql = 'SELECT * FROM article WHERE id_article = :id_article';
     $query = $bdd->prepare($sql);
-    $query->bindvalue(':id', $article_id);
+    $query->bindvalue(':id_article', $id_article);
     $query->execute();
 
     return $query->fetch();
 }
 // 3.
-function getArticlesByCategorieId($categorie_id) {
+function getArticlesByCategorieId($id_categorie) {
     global $bdd;
-    $sql = 'SELECT * FROM article WHERE categorie_id = :id';
-    $query = $bdd->query->prepare($sql);
-    $query->bindvalue(':id', $categorie_id);
+    $sql = 'SELECT * FROM article, auteur WHERE article.id_auteur = auteur.id_auteur AND article.id_categorie = :id_categorie' ;
+    $query = $bdd->prepare($sql);
+    $query->bindvalue(':id_categorie', $id_categorie);
     $query->execute();
 
     return $query->fetchAll();

@@ -17,12 +17,16 @@ $articles = getArticles();
         <div class="row">
             <?php foreach ($articles as $article) { ?>
             <div class="col-md-4 mt-4">
-                <div class="card">
+                <div class="card shadow-sm">
                     <img src="assets/img/article/<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['titre'] ?>">
                     <div class="card-body">
                         <h5 class="card-title"><?= $article['titre'] ?></h5>
-                        <p class="card-text"></p>
-                        <a href="#" class="btn btn-primary">Gadé vwè...</a>
+                        <p class="card-text"><?= summarize($article['contenu']) ?></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                        <a href="article.php?id_article=<?= $article['id_article'] ?>" class="btn btn-primary">Gadé vwè...</a>
+                        <small class="text-muted"><?= $article['prenom'] . ' '. $article['nom'] ?></small>
+                        </div>
+                       
                     </div>
                 </div>
             </div>
