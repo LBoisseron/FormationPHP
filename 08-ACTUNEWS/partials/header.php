@@ -34,6 +34,9 @@ $auteurEstConnecte = estConnecte();
     <!--STYLES PERSONNALISES-->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!--CK EDITOR CDN-->
+    <script src="https://cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
+
 </head>
 <body>
 
@@ -49,20 +52,24 @@ $auteurEstConnecte = estConnecte();
                     <a class="nav-link" href=".">KontanVwèZot <span class="sr-only">(current)</span></a>
                 </li>
 <!--Les caégories du site-->
+         
                 <?php foreach($categories as $categorie) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="categorie.php?nom_categorie=<?= $categorie['nom']; ?>&id_categorie=<?= $categorie['id_categorie'] ?>"><?= $categorie['nom']; ?><span class="sr-only">(current)</span></a>
                 </li>
                 <?php } ?>
-                
+     
+               
                 <?php if($auteurEstConnecte) { ?>
                     <span class="navbar-text mx-2">
                         Byenbonjou <strong><?= $auteurEstConnecte['prenom']?></strong>
                     </span>
-                    <a class="nav-item active btn-outline-primary mx-2" href="deconnexion.php">Déconnexion</a>
+                    <button type="button" class="btn btn-outline-success"><a class="nav-link" href="creer-un-article.php">Créer un article<span class="sr-only">(current)</span></a></button>
+                    
+                    <button type="button" class="btn btn-outline-danger"><a class="nav-item active btn-outline-primary mx-2" href="deconnexion.php">Déconnexion<span class="sr-only">(current)</span></a>
+                    
                 <?php } else { ?>
 
-                
                 
                 <li class="nav-item active btn-outline-primary mx-2">
                     <a class="nav-link" href="connexion.php">Konèkté'w <span class="sr-only">(current)</span></a>
@@ -70,6 +77,7 @@ $auteurEstConnecte = estConnecte();
                 <li class="nav-item active btn-outline-primary mx-2">
                     <a class="nav-link" href="inscription.php">Enskri'w <span class="sr-only">(current)</span></a>
                 </li>
+                
                 <?php } ?>
             </ul>
         </div>
