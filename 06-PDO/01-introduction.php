@@ -13,7 +13,7 @@
 // pour connecter PHP et MySQL on utilisera une librairie : PDO
 // PDO permettra d'effectuer des opérations CRUD sur ma base
 
-$bdd = new PDO('mysql:localhost;bddname=actunews', 'root', '');
+$bdd = new PDO('mysql:localhost;dbname=actunews', 'root', '');
 
 var_dump($bdd);
 

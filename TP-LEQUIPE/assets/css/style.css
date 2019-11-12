@@ -1,0 +1,30 @@
+p {
+    font-family: 'Schoolbell', cursive;
+}
+
+body {
+    background-color: orange;
+}
+
+nav a {
+    display: inline;
+    padding-right: 50%;
+    margin-left: 3rem;
+    font-family: 'Schoolbell', cursive;
+}
+
+
+
+.imgprojecteur {
+    width: 100%;
+}
+
+#imgprojecteur {
+    max-width: 100%;
+}
+
+#footer {
+    padding-top: 4rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
